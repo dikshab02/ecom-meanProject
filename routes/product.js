@@ -17,20 +17,30 @@ router.post('/', function(req, res){
 //api to fetch product details
 router.get('/',function(req, res){
     mongodb.getDBobject().collection('products').find().toArray((err,result)=>{
-        console.log("result->",result);
+       // console.log("result->",result);
         if(err)
             res.send(err)
             else
             res.send(result)
     })
-
 })
 
 //api to update product details based on product id
 router.put('/', function(req, res){
-    mongodb.getDBobject().collection('products').find((p)=>{
-        res.send({message: 'Put is working'})
-    })
+        var filterParams = { productId: req.body.productId };
+        delete req.body._id;
+        console.log('data = ', req.body)
+        var setData = {$set: req.body};
+        mongodb.getDBobject().collection('products').updateOne(filterParams, setData, (err,res1)=>{
+            console.log('err = ', err)
+            console.log('res1 = ', res1)
+            if(err)
+                res.json({error:err})
+            if(res1)
+                res.json("Updated successfully");
+        })
+        // console.log("product= ", req.body)
+        // res.send({message: 'Put is working'})
 })
 
 module.exports = router;
