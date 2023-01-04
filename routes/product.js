@@ -14,4 +14,23 @@ router.post('/', function(req, res){
     })
 })
 
+//api to fetch product details
+router.get('/',function(req, res){
+    mongodb.getDBobject().collection('products').find().toArray((err,result)=>{
+        console.log("result->",result);
+        if(err)
+            res.send(err)
+            else
+            res.send(result)
+    })
+
+})
+
+//api to update product details based on product id
+router.put('/', function(req, res){
+    mongodb.getDBobject().collection('products').find((p)=>{
+        res.send({message: 'Put is working'})
+    })
+})
+
 module.exports = router;
