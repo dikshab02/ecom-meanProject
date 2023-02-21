@@ -21,6 +21,7 @@ app.get('/',function(req,res){
 
 app.use('/user', require('./routes/user')); //to connect user child route
 app.use('/prod', require('./routes/product'));// to connect product child route
+app.use('/cart', require('./routes/cart')); //to connect cart child route
 
 
 var server = app.listen(1411,function(){
