@@ -15,17 +15,5 @@ router.post('/', function(req,res){
     console.log('req.body = ', req.body)
 })
 
-router.get('/',function(req,res){
-    let userId = req.query.userId;
-    console.log('userId = ', userId);
-    mongodb.getDBobject().collection('orders').find({createdBy: req.query.userId}).toArray((err,result)=>{
-        if(err){
-            res.send(err)
-        }
-        else{
-            res.send(result)
-        }
-    })
-})
 
 module.exports = router;
