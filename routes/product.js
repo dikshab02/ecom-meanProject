@@ -39,8 +39,6 @@ router.put('/', function(req, res){
             if(res1)
                 res.json("Updated successfully");
         })
-        // console.log("product= ", req.body)
-        // res.send({message: 'Put is working'})
 })
 
 module.exports = router;

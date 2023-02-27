@@ -23,6 +23,7 @@ app.use('/user', require('./routes/user')); //to connect user child route
 app.use('/prod', require('./routes/product'));// to connect product child route
 app.use('/cart', require('./routes/cart')); //to connect cart child route
 app.use('/orders',require('./routes/orders'));
+app.use('/search',require('./routes/search')); //search functionality
 
 
 var server = app.listen(1411,function(){

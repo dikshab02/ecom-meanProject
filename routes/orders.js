@@ -4,8 +4,8 @@ const mongodb = require('../mongodb');
 
 //myOrdersModule
 router.get('/',function(req,res){
-    let userId = req.query.userId;
-    console.log('userId = ', userId);
+    // let userId = req.query.userId;
+    // console.log('userId = ', userId);
     mongodb.getDBobject().collection('orders').find({createdBy: req.query.userId}).toArray((err,result)=>{
         if(err){
             res.send(err)
